@@ -5,6 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.0.0-beta.4] — 2026-02-08
+
+### Added
+- **Header Editor Redesign**: Side-drawer modal with live dashboard preview (matches Layout tab pattern)
+- **Font Customization**: Font weight (Thin/Light/Normal/Medium/Bold) selector
+- **Letter Spacing Control**: Four-level letter spacing selector (Tight/Normal/Wide/Extra Wide)
+- **Font Style Options**: Normal/Italic/UPPERCASE toggle controls
+- **Clock Format Control**: 24-hour vs 12-hour (AM/PM) format selector
+- **Clock & Date Size Sliders**: Independent size controls (0.5x–2.0x) for clock and date elements
+- **Accordion Sections**: Header editor organized into Typography, Style, Clock, and Visibility sections
+- **Reset Buttons**: Individual reset buttons for each modified setting
+
+### Changed
+- **Header Layout**: Restructured from absolute positioning to flex layout
+  - Heading and clock now aligned at same Y coordinate (top)
+  - Date positioned below heading, shares same left X coordinate
+  - Improved responsive alignment and visual consistency
+- **Font Selector**: Replaced ModernDropdown with compact 2-column grid (fits narrow drawer)
+- **Drawer Background**: Use solid `--modal-bg` instead of `--card-bg` gradient (card transparency no longer affects drawer)
+- **Header Editor**: Full-height side-drawer that slides from right edge
+
+### Fixed
+- **Card Transparency Independence**: Header editor drawer no longer affected by card transparency setting
+- **i18n Synchronization**: Added missing keys to Norwegian translation file (nn.json)
+- **M3Slider Touch**: Refined touch handling for better responsiveness
+
 ## [1.0.0-beta.3] — 2026-02-07
 
 ### Added
