@@ -1,7 +1,6 @@
 import { createContext, useContext, useState, useEffect, useRef, useCallback } from 'react';
 import { createConnection, createLongLivedTokenAuth, subscribeEntities, getAuth } from 'home-assistant-js-websocket';
 import { saveTokens, loadTokens, clearOAuthTokens, hasOAuthTokens } from '../services/oauthStorage';
-import { createIngressAuth } from '../services/haClient';
 
 const HomeAssistantContext = createContext(null);
 
@@ -130,10 +129,15 @@ export const HomeAssistantProvider = ({ children, config }) => {
     }
 
     async function connectWithOAuth(url) {
+      const redirectUrl = typeof window !== 'undefined'
+        ? `${window.location.origin}${window.location.pathname}`
+        : undefined;
       const auth = await getAuth({
         hassUrl: url,
         saveTokens,
         loadTokens: () => Promise.resolve(loadTokens()),
+        clientId: typeof window !== 'undefined' ? window.location.origin : undefined,
+        redirectUrl,
       });
       // Clean up OAuth callback params from URL after successful auth
       if (window.location.search.includes('auth_callback')) {
