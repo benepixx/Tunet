@@ -23,10 +23,10 @@ A modern React dashboard for Home Assistant with real-time entity control, energ
 ```bash
 git clone https://github.com/oyvhov/tunet.git
 cd tunet
-docker-compose up -d
+docker compose up -d
 ```
 
-Open `http://localhost:5173` and connect your Home Assistant instance.
+Open `http://localhost:3002` and connect your Home Assistant instance.
 
 ### Local Development
 

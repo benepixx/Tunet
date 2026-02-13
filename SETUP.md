@@ -59,16 +59,16 @@ The Vite dev server proxies `/api` requests to the backend automatically.
 ### Docker Compose (recommended)
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
-Access at `http://localhost:5173`. Profile data is persisted in a Docker volume (`tunet-data`).
+Access at `http://localhost:3002`. Profile data is persisted in a Docker volume (`tunet-data`).
 
 ### Docker directly
 
 ```bash
 docker build -t tunet-dashboard .
-docker run -d -p 5173:80 -v tunet-data:/app/data --name tunet-dashboard tunet-dashboard
+docker run -d -p 3002:3002 -v tunet-data:/app/data --name tunet-dashboard tunet-dashboard
 ```
 
 ### Useful commands
@@ -94,7 +94,7 @@ Dashboard layout is stored in `localStorage`. Profiles are stored server-side in
 
 | Variable | Default | Description |
 |---|---|---|
-| `PORT` | `80` (Docker) / `3002` (dev) | Backend server port |
+| `PORT` | `3002` | Backend server port |
 | `DATA_DIR` | `/app/data` | SQLite database directory |
 | `NODE_ENV` | `production` | Environment mode |
 
@@ -103,7 +103,8 @@ Dashboard layout is stored in `localStorage`. Profiles are stored server-side in
 | Problem | Solution |
 |---|---|
 | Port in use | Change the port mapping in `docker-compose.yml` |
-| Build fails | `docker system prune -a` then rebuild |
+| Build fails | Ensure Docker has enough memory. Try `docker system prune -a` then rebuild |
+| Native module error | The Dockerfile installs build tools automatically. If building locally, ensure `python3`, `make`, and `g++` are available |
 | Connection error | Check HA URL and token. Verify CORS if using external access |
 | Profiles not saving | Check that the backend is running (`/api/health`) |
 
