@@ -64,6 +64,16 @@ docker compose up -d
 
 Access at `http://localhost:3002`. Profile data is persisted in a Docker volume (`tunet-data`).
 
+Verify:
+
+```bash
+docker logs tunet-dashboard
+# expect: Tunet backend running on port 3002
+
+curl http://localhost:3002/api/health
+# expect: {"status":"ok",...}
+```
+
 ### Docker directly
 
 ```bash

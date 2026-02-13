@@ -40,6 +40,12 @@ npm run dev:all
 - Frontend: `http://localhost:5173`
 - Backend API: `http://localhost:3002/api`
 
+### Ports
+
+- Docker: `http://localhost:3002`
+- Local dev UI (Vite): `http://localhost:5173`
+- Local dev API (Express): `http://localhost:3002/api`
+
 See [SETUP.md](SETUP.md) for detailed setup and configuration.
 
 ## Light Control
