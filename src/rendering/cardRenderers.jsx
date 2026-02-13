@@ -171,7 +171,7 @@ export function renderVacuumCard(vacuumId, dragProps, getControls, cardStyle, se
   );
 }
 
-export function renderMediaPlayerCard(mpId, dragProps, getControls, cardStyle, ctx) {
+export function renderMediaPlayerCard(mpId, dragProps, getControls, cardStyle, _settingsKey, ctx) {
   const { entities, editMode, customNames, getA, getEntityImageUrl, callService, isMediaActive, openMediaModal, t } = ctx;
   return (
     <MediaPlayerCard
