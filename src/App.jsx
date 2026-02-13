@@ -782,15 +782,18 @@ export default function App() {
   const [showOnboarding, setShowOnboarding] = useState(() => !hasAuth);
 
   // During onboarding, block token connections but ALLOW OAuth (including callbacks)
-  // For Ingress, always pass config through so the connection can be established
-  const haConfig = showOnboarding && !config.isIngress
+  const haConfig = showOnboarding
     ? config.authMethod === 'oauth'
       ? config                     // OAuth: pass config through so callback can be processed
       : { ...config, token: '' }   // Token: block until onboarding finishes
     : config;
 
+  // Key forces HomeAssistantProvider to remount when onboarding completes,
+  // ensuring the fresh credentials trigger a new connection attempt.
+  const providerKey = showOnboarding ? 'onboarding' : 'live';
+
   return (
-    <HomeAssistantProvider config={haConfig}>
+    <HomeAssistantProvider key={providerKey} config={haConfig}>
       <AppContent
         showOnboarding={showOnboarding}
         setShowOnboarding={setShowOnboarding}
