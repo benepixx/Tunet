@@ -197,11 +197,17 @@ export const HomeAssistantProvider = ({ children, config }) => {
 
     async function connect() {
       try {
-        if (config.isIngress) {
+        // If we have a token, connect directly using the standard token auth
+        // This works for both standalone and Ingress (if the user provides a token)
+        if (config.token) {
+          await connectWithToken(config.url);
+        } else if (config.isIngress) {
+            // Attempt magic Ingress auth (no token)
             await connectWithIngress(config.url);
         } else if (isOAuth) {
           await connectWithOAuth(config.url);
         } else {
+          // Fallback
           await connectWithToken(config.url);
         }
       } catch (err) {
