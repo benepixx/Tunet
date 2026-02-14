@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.8
+
+- Release metadata sync.
+
 ## 1.0.7
 
 - Synced release metadata with dashboard beta.10 fixes.
