@@ -17,6 +17,8 @@ Thank you for your interest in contributing to Tunet!
 -   Follow the existing code style.
 -   Keep pull requests focused on a single feature or fix.
 -   Update documentation if necessary.
+-   For translations, add/update keys in `src/i18n/en.json` first, then keep `src/i18n/nb.json` and `src/i18n/nn.json` in sync.
+-   Run `npm run i18n:check` before opening a PR.
 
 ## Reporting Issues
 

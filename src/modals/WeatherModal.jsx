@@ -5,6 +5,7 @@ import {
 import SensorHistoryGraph from '../components/charts/SensorHistoryGraph';
 import { getForecast } from '../services/haClient';
 import { getIconComponent } from '../icons';
+import { getLocaleForLanguage } from '../i18n';
 
 const getWeatherInfo = (condition, t) => {
   const map = {
@@ -44,7 +45,7 @@ export default function WeatherModal({
   if (!show || !weatherEntity) return null;
 
   const translate = t || ((key) => key);
-  const locale = language === 'nn' ? 'nn-NO' : 'en-US';
+  const locale = getLocaleForLanguage(language);
   const condition = weatherEntity.state;
   const info = getWeatherInfo(condition, t);
   const MainIcon = info.Icon;

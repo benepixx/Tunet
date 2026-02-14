@@ -529,6 +529,7 @@ export default function ModalOrchestrator({
             onClose={() => setShowCalendarModal(false)}
             conn={conn}
             entities={entities}
+            language={language}
             t={t}
           />
         </ModalSuspense>

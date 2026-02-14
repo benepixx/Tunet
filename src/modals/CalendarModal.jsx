@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { X, Calendar, Check } from '../icons';
 import { getCalendarEvents } from '../services';
+import { getLocaleForLanguage } from '../i18n';
 
 /**
  * CalendarModal - Modal for displaying calendar with selectable calendars
@@ -17,11 +18,13 @@ export default function CalendarModal({
   onClose,
   conn,
   entities,
+  language,
   t
 }) {
   if (!show) return null;
 
   const translate = t || ((key) => key);
+  const locale = getLocaleForLanguage(language);
   
   // Get all calendar entities
   const allCalendars = Object.keys(entities || {})
@@ -102,7 +105,7 @@ export default function CalendarModal({
     
     calendarEvents.forEach(event => {
       const startDate = new Date(event.start);
-      const dateKey = startDate.toLocaleDateString('nn-NO', { 
+      const dateKey = startDate.toLocaleDateString(locale, {
         weekday: 'long', 
         year: 'numeric', 
         month: 'long', 
@@ -159,7 +162,7 @@ export default function CalendarModal({
             </h3>
             <div className="mt-2 px-3 py-1 rounded-full border inline-block transition-all duration-500" style={{ backgroundColor: 'var(--glass-bg)', borderColor: 'var(--glass-border)', color: 'var(--text-secondary)' }}>
               <p className="text-[10px] uppercase font-bold italic tracking-widest">
-                {selectedCalendars.length} {selectedCalendars.length === 1 ? 'kalender' : 'kalendrar'} vald
+                {translate('calendar.selectedCount').replace('{count}', String(selectedCalendars.length))}
               </p>
             </div>
           </div>
@@ -212,7 +215,7 @@ export default function CalendarModal({
                                       </span>
                                     ) : (
                                         <p className="text-sm font-bold text-[var(--text-primary)] tabular-nums">
-                                          {startTime.toLocaleTimeString('nn-NO', { hour: '2-digit', minute: '2-digit' })}
+                                          {startTime.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' })}
                                         </p>
                                     )}
                                      </div>

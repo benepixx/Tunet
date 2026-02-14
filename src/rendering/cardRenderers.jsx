@@ -29,6 +29,7 @@ import {
 
 import { Activity, Hash, ToggleRight, Power, Workflow } from '../icons';
 import { getIconComponent } from '../icons';
+import { getLocaleForLanguage } from '../i18n';
 
 // ─── Individual Card Renderers ───────────────────────────────────────────────
 
@@ -309,6 +310,7 @@ export function renderGenericAndroidTVCard(cardId, dragProps, getControls, cardS
 export function renderCalendarCard(cardId, dragProps, getControls, cardStyle, settingsKey, ctx) {
   const { editMode, conn, cardSettings, customNames, customIcons, language, setShowCalendarModal, setShowEditCardModal, setEditCardSettingsKey, t } = ctx;
   const sizeSetting = cardSettings[settingsKey]?.size || cardSettings[cardId]?.size;
+  const locale = getLocaleForLanguage(language);
   return (
     <CalendarCard
       key={cardId}
@@ -316,7 +318,7 @@ export function renderCalendarCard(cardId, dragProps, getControls, cardStyle, se
       settings={cardSettings[settingsKey] || cardSettings[cardId] || {}}
       conn={conn}
       t={t}
-      locale={language === 'en' ? 'en-US' : 'nb-NO'}
+      locale={locale}
       dragProps={dragProps}
       getControls={getControls}
       isEditMode={editMode}

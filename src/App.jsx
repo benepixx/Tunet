@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { en, nn } from './i18n';
+import { en, nb, nn, sv, DEFAULT_LANGUAGE, normalizeLanguage } from './i18n';
 import {
   LayoutGrid,
   Plus,
@@ -117,15 +117,11 @@ function AppContent({ showOnboarding, setShowOnboarding }) {
     activeUrl,
     authRef
   } = useHomeAssistant();
-  const translations = useMemo(() => ({ en, nn }), []);
-  const nnFallback = useMemo(() => ({
-    'system.tabHeader': 'Topptekst',
-    'system.tabLayout': 'Oppsett'
-  }), []);
+  const translations = useMemo(() => ({ en, nb, nn, sv }), []);
   const t = (key) => {
-    const value = translations[language]?.[key] ?? translations.nn[key];
+    const selectedLanguage = normalizeLanguage(language);
+    const value = translations[selectedLanguage]?.[key] ?? translations[DEFAULT_LANGUAGE]?.[key];
     if (value !== undefined) return value;
-    if (language === 'nn' && nnFallback[key]) return nnFallback[key];
     return key;
   };
   const resolvedHeaderTitle = headerTitle || t('page.home');

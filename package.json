@@ -1,7 +1,7 @@
 {
   "name": "tunet-dashboard",
   "private": true,
-  "version": "1.0.0-beta.11",
+  "version": "1.0.0-beta.12",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/oyvhov/tunet.git"
@@ -18,6 +18,7 @@
     "preview": "vite preview",
     "lint": "eslint src",
     "test": "vitest run",
+    "i18n:check": "vitest run src/__tests__/i18n.test.js",
     "test:watch": "vitest",
     "release:prep": "node scripts/release.mjs prep",
     "release:check": "node scripts/release.mjs check",

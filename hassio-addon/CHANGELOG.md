@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.9
+
+- Release metadata sync.
+
 ## 1.0.8
 
 - Release metadata sync.

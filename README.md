@@ -11,7 +11,7 @@ A modern React dashboard for Home Assistant with real-time entity control, energ
 - **Live entity updates** — real-time WebSocket connection to Home Assistant
 - **OAuth2 & token auth** — browser login or long-lived access tokens
 - **Dark/Light/Graphite themes** — with glassmorphism and weather effects
-- **Multi-language** — English and Norwegian (Nynorsk)
+- **Multi-language** — English, Norwegian (Bokmål), Norwegian (Nynorsk), and Swedish
 - **Drag-and-drop layout** — resize, reorder, and customize cards
 - **Multi-page dashboards** — organize cards across multiple pages
 - **MDI icon support** — same naming as Home Assistant (`mdi:car-battery`)
@@ -96,6 +96,17 @@ npm run release
 ```
 
 The `release:check` step is also enforced in CI on `main` PRs/pushes.
+
+## Translation Workflow
+
+- English (`src/i18n/en.json`) is the base/source-of-truth.
+- Norwegian translations are maintained in:
+	- `src/i18n/nb.json` (Bokmål)
+- Run strict translation validation before pushing:
+
+```bash
+npm run i18n:check
+```
 
 See [SETUP.md](SETUP.md) for detailed setup and configuration.
 

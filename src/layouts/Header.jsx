@@ -1,4 +1,5 @@
 import { Edit2 } from '../icons';
+import { getLocaleForLanguage } from '../i18n';
 
 /**
  * Header component with title, time and edit controls
@@ -61,7 +62,7 @@ export default function Header({
   const is12h = clockFormat === '12h';
   const clockScale = headerSettings?.clockScale ?? 1.0;
   const dateScale = headerSettings?.dateScale ?? 1.0;
-  const locale = language === 'nn' ? 'nn-NO' : 'en-US';
+  const locale = getLocaleForLanguage(language);
 
   const timeOptions = is12h
     ? { hour: 'numeric', minute: '2-digit', hour12: true }

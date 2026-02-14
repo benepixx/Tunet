@@ -6,6 +6,8 @@
  * OAuth tokens) are intentionally excluded for security.
  */
 
+import { DEFAULT_LANGUAGE, normalizeLanguage } from '../i18n';
+
 const SNAPSHOT_VERSION = 1;
 
 // ── helpers ──────────────────────────────────────────────────────────
@@ -24,6 +26,8 @@ const readNumber = (key, fallback) => {
   const n = raw === null ? NaN : Number(raw);
   return Number.isFinite(n) ? n : fallback;
 };
+
+const normalizeSnapshotLanguage = (language) => normalizeLanguage(language);
 
 // ── collect ──────────────────────────────────────────────────────────
 
@@ -52,7 +56,7 @@ export function collectSnapshot() {
     },
     appearance: {
       theme:              localStorage.getItem('tunet_theme') || 'dark',
-      language:           localStorage.getItem('tunet_language') || 'en',
+      language:           normalizeSnapshotLanguage(localStorage.getItem('tunet_language') || DEFAULT_LANGUAGE),
       bgMode:             localStorage.getItem('tunet_bg_mode') || 'theme',
       bgColor:            localStorage.getItem('tunet_bg_color') || '#0f172a',
       bgGradient:         localStorage.getItem('tunet_bg_gradient') || 'midnight',
@@ -98,7 +102,7 @@ export function applySnapshot(snapshot, contextSetters = {}) {
 
   // ── Appearance → localStorage ──
   if (appearance.theme)              localStorage.setItem('tunet_theme',              appearance.theme);
-  if (appearance.language)           localStorage.setItem('tunet_language',           appearance.language);
+  if (appearance.language)           localStorage.setItem('tunet_language',           normalizeSnapshotLanguage(appearance.language));
   if (appearance.bgMode)             localStorage.setItem('tunet_bg_mode',            appearance.bgMode);
   if (appearance.bgColor)            localStorage.setItem('tunet_bg_color',           appearance.bgColor);
   if (appearance.bgGradient)         localStorage.setItem('tunet_bg_gradient',        appearance.bgGradient);
@@ -129,7 +133,7 @@ export function applySnapshot(snapshot, contextSetters = {}) {
 
   // ConfigContext setters
   if (s.setCurrentTheme && appearance.theme)                     s.setCurrentTheme(appearance.theme);
-  if (s.setLanguage && appearance.language)                      s.setLanguage(appearance.language);
+  if (s.setLanguage && appearance.language)                      s.setLanguage(normalizeSnapshotLanguage(appearance.language));
   if (s.setBgMode && appearance.bgMode)                          s.setBgMode(appearance.bgMode);
   if (s.setBgColor && appearance.bgColor)                        s.setBgColor(appearance.bgColor);
   if (s.setBgGradient && appearance.bgGradient)                  s.setBgGradient(appearance.bgGradient);
