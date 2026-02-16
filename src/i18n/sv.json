@@ -804,6 +804,8 @@
   "weatherTemp.showEffects": "Visa effektanimation",
   "weatherTemp.subtitle": "Undertitel",
   "weatherTemp.subtitlePlaceholder": "t.ex. Oslo, Hemma",
+  "weatherTemp.graphHistory": "Grafhistorik",
+  "weatherTemp.graphLimits": "Färggränser för graf (°C)",
   "welcome.addCard": "Lägg till kort",
   "welcome.description": "Denna sida är tom. Klicka på knappen nedan för att börja bygga din instrumentpanel.",
   "welcome.restoreProfile": "Ladda profil",

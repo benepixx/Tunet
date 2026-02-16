@@ -804,6 +804,8 @@
   "weatherTemp.showEffects": "Show effects animation",
   "weatherTemp.subtitle": "Subtitle",
   "weatherTemp.subtitlePlaceholder": "e.g. Oslo, Home",
+  "weatherTemp.graphHistory": "Graph history",
+  "weatherTemp.graphLimits": "Graph color limits (°C)",
   "welcome.addCard": "Add Card",
   "welcome.description": "This page is empty. Click the button below to start building your dashboard.",
   "welcome.restoreProfile": "Load Profile",

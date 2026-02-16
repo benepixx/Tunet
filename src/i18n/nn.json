@@ -804,6 +804,8 @@
   "weatherTemp.showEffects": "Vis effektanimasjon",
   "weatherTemp.subtitle": "Undertittel",
   "weatherTemp.subtitlePlaceholder": "f.eks. Oslo, Hjemme",
+  "weatherTemp.graphHistory": "Grafhistorikk",
+  "weatherTemp.graphLimits": "Fargegrenser for graf (°C)",
   "welcome.addCard": "Legg til kort",
   "welcome.description": "Denne sida er tom. Trykk på knappen under for å starte bygginga av dashbordet ditt.",
   "welcome.restoreProfile": "Last inn profil",

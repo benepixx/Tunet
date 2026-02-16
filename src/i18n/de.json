@@ -804,6 +804,8 @@
   "weatherTemp.showEffects": "Effekt-Animation anzeigen",
   "weatherTemp.subtitle": "Untertitel",
   "weatherTemp.subtitlePlaceholder": "z.B. Berlin, Zuhause",
+  "weatherTemp.graphHistory": "Grafverlauf",
+  "weatherTemp.graphLimits": "Farbgrenzen für Graph (°C)",
   "welcome.addCard": "Karte hinzufügen",
   "welcome.description": "Diese Seite ist leer. Klicke unten auf den Button, um dein Dashboard zu erstellen.",
   "welcome.restoreProfile": "Profil laden",
