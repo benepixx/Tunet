@@ -72,6 +72,7 @@
   "addCard.type.nordpool": "Nordpool",
   "addCard.type.room": "Room",
   "addCard.type.spacer": "Spacer",
+  "addCard.spacerDescription": "Add a spacer or divider card. You can switch between spacer and divider in the edit settings.",
   "addCard.spacer.selectVariant": "Select variant",
   "addCard.spacer.spacer": "Spacer",
   "addCard.spacer.spacerDesc": "Empty space to create gaps between cards",

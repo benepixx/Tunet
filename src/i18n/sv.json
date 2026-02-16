@@ -72,6 +72,7 @@
   "addCard.type.nordpool": "Nordpool",
   "addCard.type.room": "Rum",
   "addCard.type.spacer": "Mellanrum",
+  "addCard.spacerDescription": "Lägg till ett mellanrum- eller avdelarkort. Du kan växla mellan mellanrum och avdelare i redigeringsinställningarna.",
   "addCard.spacer.selectVariant": "Välj variant",
   "addCard.spacer.spacer": "Mellanrum",
   "addCard.spacer.spacerDesc": "Tomt utrymme mellan kort",

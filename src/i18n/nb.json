@@ -710,6 +710,7 @@
   "settings.descSystem": "System og oppdateringer",
   "addCard.type.room": "Rom",
   "addCard.type.spacer": "Mellomrom",
+  "addCard.spacerDescription": "Legg til et mellomrom- eller skillekort. Du kan bytte mellom mellomrom og skillelinje i redigeringsinnstillingene.",
   "addCard.spacer.selectVariant": "Vel variant",
   "addCard.spacer.spacer": "Mellomrom",
   "addCard.spacer.spacerDesc": "Tomt rom mellom kort",

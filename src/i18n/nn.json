@@ -72,6 +72,7 @@
   "addCard.type.nordpool": "Nordpool",
   "addCard.type.room": "Rom",
   "addCard.type.spacer": "Mellomrom",
+  "addCard.spacerDescription": "Legg til eit mellomrom- eller skillekort. Du kan byte mellom mellomrom og skiljelinje i redigeringsinnstillingane.",
   "addCard.spacer.selectVariant": "Vel variant",
   "addCard.spacer.spacer": "Mellomrom",
   "addCard.spacer.spacerDesc": "Tomt rom mellom kort",
