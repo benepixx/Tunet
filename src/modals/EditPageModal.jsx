@@ -67,6 +67,40 @@ const EditPageModal = ({
               </button>
            </div>
 
+           <div className="space-y-2">
+             <label className="text-xs uppercase font-bold text-gray-500 ml-1">{t('form.gridColumnsPage')}</label>
+             <p className="text-[10px] text-gray-500 ml-1 -mt-1">{t('form.gridColumnsPageHint')}</p>
+             <div className="flex gap-2">
+               {[1,2,3,4,5].map(cols => {
+                 const pageGridColumns = pageSettings[editingPage]?.gridColumns;
+                 const isActive = pageGridColumns === cols;
+                 return (
+                   <button
+                     key={cols}
+                     type="button"
+                     onClick={() => savePageSetting(editingPage, 'gridColumns', cols)}
+                     className={`flex-1 h-10 rounded-xl text-sm font-bold transition-all ${
+                       isActive ? 'text-white shadow-md' : 'hover:bg-white/5'
+                     }`}
+                     style={isActive ? { backgroundColor: 'var(--accent-color)' } : { backgroundColor: 'var(--glass-bg)', color: 'var(--text-secondary)' }}
+                   >
+                     {cols}
+                   </button>
+                 );
+               })}
+             </div>
+             {pageSettings[editingPage]?.gridColumns !== undefined && (
+               <button
+                 type="button"
+                 onClick={() => savePageSetting(editingPage, 'gridColumns', null)}
+                 className="w-full py-2 rounded-xl text-xs font-bold uppercase tracking-widest transition-colors"
+                 style={{ backgroundColor: 'var(--glass-bg-hover)', color: 'var(--text-secondary)' }}
+               >
+                 {t('settings.useGlobal')}
+               </button>
+             )}
+           </div>
+
            {editingPage !== 'home' && (
              <button
                onClick={() => onDelete(editingPage)}

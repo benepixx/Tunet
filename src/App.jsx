@@ -170,7 +170,10 @@ function AppContent({ showOnboarding, setShowOnboarding }) {
   const [forecastsById, _setForecastsById] = useWeatherForecast(conn, cardSettings);
 
   // ── Responsive grid ────────────────────────────────────────────────────
-  const { gridColCount, isCompactCards, isMobile } = useResponsiveGrid(gridColumns, dynamicGridColumns);
+  // Use page-specific gridColumns if set, otherwise fall back to global
+  const pageGridColumns = pageSettings[activePage]?.gridColumns;
+  const effectiveGridColumns = Number.isFinite(pageGridColumns) ? pageGridColumns : gridColumns;
+  const { gridColCount, isCompactCards, isMobile } = useResponsiveGrid(effectiveGridColumns, dynamicGridColumns);
 
   // ── Connection / onboarding hook ───────────────────────────────────────
   const {
@@ -444,6 +447,7 @@ function AppContent({ showOnboarding, setShowOnboarding }) {
     setGridColumns,
     dynamicGridColumns,
     setDynamicGridColumns,
+    effectiveGridColumns,
     cardBorderRadius,
     setCardBorderRadius,
     sectionSpacing,

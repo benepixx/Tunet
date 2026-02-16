@@ -31,6 +31,7 @@ export default function LayoutSidebar({
   setGridColumns,
   dynamicGridColumns,
   setDynamicGridColumns,
+  effectiveGridColumns,
   cardBorderRadius,
   setCardBorderRadius,
   cardTransparency,
@@ -39,6 +40,9 @@ export default function LayoutSidebar({
   setCardBorderOpacity,
   sectionSpacing,
   updateSectionSpacing,
+  activePage,
+  pageSettings,
+  savePageSetting,
 }) {
   const [layoutSections, setLayoutSections] = useState({ grid: true, spacing: false, cards: false });
   const [maxGridColumns, setMaxGridColumns] = useState(() => {
@@ -47,7 +51,12 @@ export default function LayoutSidebar({
   });
   const selectableMaxGridColumns = dynamicGridColumns ? Math.min(maxGridColumns, 4) : maxGridColumns;
   const toggleSection = (key) => setLayoutSections(prev => ({ ...prev, [key]: !prev[key] }));
-  const effectiveGridColumns = Math.max(MIN_GRID_COLUMNS, Math.min(gridColumns, selectableMaxGridColumns));
+  
+  // Check if current page has a gridColumns override
+  const pageGridColumns = pageSettings[activePage]?.gridColumns;
+  const hasPageOverride = Number.isFinite(pageGridColumns);
+  const displayedGridColumns = hasPageOverride ? pageGridColumns : gridColumns;
+  const computedEffectiveGridColumns = Math.max(MIN_GRID_COLUMNS, Math.min(displayedGridColumns, selectableMaxGridColumns));
 
   useEffect(() => {
     const update = () => setMaxGridColumns(getMaxGridColumnsForWidth(window.innerWidth));
@@ -192,11 +201,34 @@ export default function LayoutSidebar({
                 {t('settings.gridDynamicHint')}
               </p>
             )}
+            {hasPageOverride && (
+              <div className="mb-3 px-3 py-2 rounded-xl border" style={{ backgroundColor: 'var(--accent-bg)', borderColor: 'var(--accent-color)', color: 'var(--accent-color)' }}>
+                <div className="flex items-center gap-2">
+                  <Eye className="w-3.5 h-3.5 flex-shrink-0" />
+                  <span className="text-[10px] font-bold uppercase tracking-wider">{t('settings.pageOverride')}</span>
+                </div>
+                <p className="text-[9px] mt-1 leading-relaxed" style={{ color: 'color-mix(in srgb, var(--accent-color), var(--text-muted) 30%)' }}>
+                  {t('settings.pageOverrideHint')}
+                </p>
+              </div>
+            )}
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[11px] font-bold uppercase tracking-wider" style={{ color: 'var(--text-secondary)' }}>{t('settings.gridColumns')}</span>
+              <span className="text-[11px] font-bold uppercase tracking-wider" style={{ color: 'var(--text-secondary)' }}>
+                {hasPageOverride ? t('settings.gridColumnsPage') : t('settings.gridColumns')}
+              </span>
               <div className="flex items-center gap-2">
-                <span className="text-[11px] tabular-nums font-mono" style={{ color: 'var(--accent-color)' }}>{effectiveGridColumns}</span>
-                {gridColumns !== 4 && <ResetButton onClick={() => setGridColumns(Math.min(4, maxGridColumns))} />}
+                <span className="text-[11px] tabular-nums font-mono" style={{ color: 'var(--accent-color)' }}>{computedEffectiveGridColumns}</span>
+                {hasPageOverride && (
+                  <button
+                    onClick={() => savePageSetting(activePage, 'gridColumns', null)}
+                    className="px-2 py-1 rounded-lg text-[9px] font-bold uppercase tracking-wider transition-all"
+                    style={{ backgroundColor: 'var(--glass-bg-hover)', color: 'var(--text-secondary)' }}
+                    title={t('settings.useGlobal')}
+                  >
+                    {t('settings.useGlobal')}
+                  </button>
+                )}
+                {!hasPageOverride && gridColumns !== 4 && <ResetButton onClick={() => setGridColumns(Math.min(4, maxGridColumns))} />}
               </div>
             </div>
             <M3Slider 

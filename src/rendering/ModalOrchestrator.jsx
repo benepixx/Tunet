@@ -99,6 +99,7 @@ export default function ModalOrchestrator({
     gridGapH, setGridGapH, gridGapV, setGridGapV,
     gridColumns, setGridColumns,
     dynamicGridColumns, setDynamicGridColumns,
+    effectiveGridColumns,
     cardBorderRadius, setCardBorderRadius,
     sectionSpacing, updateSectionSpacing,
     headerTitle, headerScale, headerSettings,
@@ -121,6 +122,7 @@ export default function ModalOrchestrator({
     createPage, createMediaPage, deletePage,
     pageSettings, savePageSetting, persistPageSettings,
     pagesConfig, persistConfig,
+    activePage,
   } = pageManagement;
 
   const {
@@ -350,6 +352,7 @@ export default function ModalOrchestrator({
           setGridColumns={setGridColumns}
           dynamicGridColumns={dynamicGridColumns}
           setDynamicGridColumns={setDynamicGridColumns}
+          effectiveGridColumns={effectiveGridColumns}
           cardBorderRadius={cardBorderRadius}
           setCardBorderRadius={setCardBorderRadius}
           cardTransparency={cardTransparency}
@@ -358,6 +361,9 @@ export default function ModalOrchestrator({
           setCardBorderOpacity={setCardBorderOpacity}
           sectionSpacing={sectionSpacing}
           updateSectionSpacing={updateSectionSpacing}
+          activePage={activePage}
+          pageSettings={pageSettings}
+          savePageSetting={savePageSetting}
         />
       </ModalSuspense>
 
