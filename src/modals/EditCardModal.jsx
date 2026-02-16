@@ -337,18 +337,6 @@ export default function EditCardModal({
                 </div>
               </div>
 
-              {(editSettings.variant === 'title') && (
-                <div className="space-y-2">
-                  <label className="text-xs uppercase font-bold text-gray-500 ml-1">{t('spacer.titleText') || 'Title Text'}</label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-3 text-[var(--text-primary)] rounded-2xl popup-surface focus:border-blue-500/50 outline-none transition-colors"
-                    defaultValue={editSettings.heading || ''}
-                    onBlur={(e) => saveCardSetting(editSettingsKey, 'heading', e.target.value.trim() || null)}
-                    placeholder={t('spacer.titlePlaceholder') || 'Section title...'}
-                  />
-                </div>
-              )}
             </div>
           )}
 
