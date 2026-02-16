@@ -81,7 +81,7 @@ export default function DashboardGrid({
       className="grid font-sans page-transition items-start"
       style={{
         gap: isMobile ? '12px' : `${gridGapV}px ${gridGapH}px`,
-        gridAutoRows: isMobile ? '82px' : '100px',
+        gridAutoRows: 'auto',
         gridTemplateColumns: `repeat(${gridColCount}, minmax(0, 1fr))`,
       }}
     >
@@ -114,23 +114,26 @@ export default function DashboardGrid({
           if (!cardContent) return null;
 
           const gapPx = isMobile ? 12 : gridGapV;
-          const spacerHeight = isSpacerCard
-            ? (spacerVariant === 'title' ? 32 : gapPx)
-            : undefined;
+          const rowPx = isMobile ? 82 : 100;
+          let cardHeight;
+          if (isSpacerCard) {
+            cardHeight = spacerVariant === 'title' ? 32 : gapPx;
+          } else if (isLargeCard && sizeSetting !== 'small' && sizeSetting !== 'medium') {
+            cardHeight = (4 * rowPx) + (3 * gapPx);
+          } else {
+            cardHeight = forcedSpan * rowPx + Math.max(0, forcedSpan - 1) * gapPx;
+          }
 
           return (
             <div
               key={id}
-              className={`relative ${isSpacerCard ? '' : 'h-full'} ${(isCompactCards || isMobile) ? 'card-compact' : ''}`}
+              className={`relative ${(isCompactCards || isMobile) ? 'card-compact' : ''}`}
               style={{
                 gridRowStart: placement.row,
                 gridColumnStart: placement.col,
                 gridRowEnd: `span ${forcedSpan}`,
                 gridColumnEnd: colSpan > 1 ? `span ${colSpan}` : undefined,
-                height: spacerHeight != null ? `${spacerHeight}px` : undefined,
-                minHeight: isLargeCard && sizeSetting !== 'small' && sizeSetting !== 'medium'
-                  ? `${(4 * 100) + (3 * gapPx)}px`
-                  : undefined,
+                height: `${cardHeight}px`,
               }}
             >
               {heading && (
