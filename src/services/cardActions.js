@@ -215,8 +215,7 @@ export const handleAddSelected = (ctx) => {
 
     case 'spacer': {
       const cardId = `spacer_card_${Date.now()}`;
-      const openEdit = selectedSpacerVariant === 'title';
-      commitSingleCard(cardId, { variant: selectedSpacerVariant || 'spacer' }, { openEdit });
+      commitSingleCard(cardId, { variant: selectedSpacerVariant || 'spacer' });
       return;
     }
 

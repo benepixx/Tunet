@@ -304,7 +304,6 @@ export default function EditCardModal({
                   {[
                     { key: 'spacer', label: t('spacer.spacer') || 'Spacer' },
                     { key: 'divider', label: t('spacer.divider') || 'Divider' },
-                    { key: 'title', label: t('spacer.title') || 'Title' },
                   ].map(v => (
                     <button
                       key={v.key}

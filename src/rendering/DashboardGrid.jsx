@@ -106,7 +106,6 @@ export default function DashboardGrid({
           const heading = cardSettings[settingsKey]?.heading;
           const colSpan = placement?.colSpan || 1;
           const isSpacerCard = id.startsWith('spacer_card_');
-          const spacerVariant = isSpacerCard ? (cardSettings[settingsKey]?.variant || 'spacer') : null;
 
           if (!editMode && (hiddenCards.includes(id) || isCardHiddenByLogic(id))) return null;
 
@@ -117,7 +116,7 @@ export default function DashboardGrid({
           const rowPx = isMobile ? 82 : 100;
           let cardHeight;
           if (isSpacerCard) {
-            cardHeight = spacerVariant === 'title' ? 32 : gapPx;
+            cardHeight = gapPx;
           } else if (isLargeCard && sizeSetting !== 'small' && sizeSetting !== 'medium') {
             cardHeight = (4 * rowPx) + (3 * gapPx);
           } else {

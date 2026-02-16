@@ -329,7 +329,6 @@ export default function AddCardContent({
     const variants = [
       { key: 'spacer', label: getLabel('addCard.spacer.spacer', 'Spacer'), desc: getLabel('addCard.spacer.spacerDesc', 'Empty space to create gaps between cards') },
       { key: 'divider', label: getLabel('addCard.spacer.divider', 'Divider'), desc: getLabel('addCard.spacer.dividerDesc', 'Horizontal line to separate sections') },
-      { key: 'title', label: getLabel('addCard.spacer.title', 'Title'), desc: getLabel('addCard.spacer.titleDesc', 'Section heading to label groups of cards') },
     ];
 
     return (

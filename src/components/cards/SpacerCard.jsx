@@ -4,7 +4,6 @@
  * Variants:
  *   'spacer'  – transparent empty block (visual gap)
  *   'divider' – horizontal line separator
- *   'title'   – section heading text
  */
 
 const SpacerCard = ({
@@ -19,7 +18,6 @@ const SpacerCard = ({
 }) => {
   const settings = cardSettings[settingsKey] || cardSettings[cardId] || {};
   const variant = settings.variant || 'spacer';
-  const heading = settings.heading || '';
 
   const editClass = editMode
     ? 'border border-dashed border-[var(--glass-border)] cursor-move bg-[var(--card-bg)]/30'
@@ -34,24 +32,8 @@ const SpacerCard = ({
       {controls}
 
       {variant === 'divider' && (
-        <div className="w-full px-6">
+        <div className="w-full">
           <hr className="border-t border-[var(--glass-border)] opacity-40" />
-        </div>
-      )}
-
-      {variant === 'title' && heading && (
-        <div className="w-full px-4">
-          <h3 className="text-xs uppercase font-bold tracking-widest text-[var(--text-secondary)] opacity-60">
-            {heading}
-          </h3>
-        </div>
-      )}
-
-      {variant === 'title' && !heading && editMode && (
-        <div className="w-full px-4">
-          <p className="text-xs uppercase font-bold tracking-widest text-[var(--text-secondary)] opacity-30 italic">
-            Set title in edit...
-          </p>
         </div>
       )}
     </div>
