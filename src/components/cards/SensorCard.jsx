@@ -394,9 +394,12 @@ export default function SensorCard({
         ) : (
           <>
             {domain !== 'input_number' && showStatus && (
-              <h3 className="text-2xl font-medium text-[var(--text-primary)] leading-none">
-                {displayState}
-              </h3>
+              <div className="flex items-baseline gap-2">
+                <h3 className="text-2xl font-medium text-[var(--text-primary)] leading-none">
+                  {displayState}
+                </h3>
+                {unit && <span className="text-sm font-medium text-[var(--text-secondary)] uppercase">{unit}</span>}
+              </div>
             )}
             {renderControls()}
           </>
