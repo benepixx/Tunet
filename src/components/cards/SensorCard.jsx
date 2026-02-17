@@ -280,11 +280,11 @@ export default function SensorCard({
           >
             <Minus className="w-3.5 h-3.5" />
           </button>
-          <div className="flex items-baseline gap-1">
+          <div className="flex items-baseline gap-1 flex-wrap">
             <span className="text-base font-semibold text-[var(--text-primary)] tracking-tight">
               {isNumeric ? parseFloat(state) : state}
             </span>
-            <span className="text-[10px] font-medium text-[var(--text-secondary)] uppercase tracking-wider ml-1">
+            <span className="text-[10px] font-medium text-[var(--text-secondary)] uppercase tracking-wider ml-1 whitespace-nowrap flex-shrink-0">
               {unit}
             </span>
           </div>
@@ -315,11 +315,11 @@ export default function SensorCard({
           </div>
           <div className="flex flex-col min-w-0">
             {showName && <p className="text-[var(--text-secondary)] text-xs tracking-widest uppercase font-bold opacity-60 whitespace-normal break-words leading-none mb-1.5">{String(name)}</p>}
-             <div className="flex items-baseline gap-1">
+             <div className="flex items-baseline gap-1 flex-wrap">
                 {showStatus && <span className="text-sm font-bold text-[var(--text-primary)] leading-none">
                   {displayState}
                 </span>}
-                {showStatus && unit && <span className="text-[10px] font-medium text-[var(--text-secondary)] uppercase tracking-wider leading-none">{unit}</span>}
+                {showStatus && unit && <span className="text-[10px] font-medium text-[var(--text-secondary)] uppercase tracking-wider leading-none whitespace-nowrap flex-shrink-0">{unit}</span>}
             </div>
           </div>
         </div>
@@ -366,11 +366,11 @@ export default function SensorCard({
         <div className={`p-3 rounded-2xl ${iconToneClass}`}>
           {Icon ? <Icon className="w-5 h-5 stroke-[1.5px]" /> : <Activity className="w-5 h-5" />}
         </div>
-        <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border bg-[var(--glass-bg)] border-[var(--glass-border)] text-[var(--text-secondary)]">
+        <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border bg-[var(--glass-bg)] border-[var(--glass-border)] text-[var(--text-secondary)] flex-wrap">
           <span className="text-xs tracking-widest uppercase font-bold">
             {displayState}
           </span>
-          {unit && <span className="text-[10px] font-medium uppercase tracking-wider">{unit}</span>}
+          {unit && <span className="text-[10px] font-medium uppercase tracking-wider whitespace-nowrap flex-shrink-0">{unit}</span>}
         </div>
       </div>
 
@@ -394,9 +394,12 @@ export default function SensorCard({
         ) : (
           <>
             {domain !== 'input_number' && showStatus && (
-              <h3 className="text-2xl font-medium text-[var(--text-primary)] leading-none">
-                {displayState}
-              </h3>
+              <div className="flex items-baseline gap-2">
+                <h3 className="text-2xl font-medium text-[var(--text-primary)] leading-none">
+                  {displayState}
+                </h3>
+                {unit && <span className="text-sm font-medium text-[var(--text-secondary)] uppercase">{unit}</span>}
+              </div>
             )}
             {renderControls()}
           </>
