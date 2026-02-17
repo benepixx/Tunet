@@ -94,7 +94,7 @@ const CarCard = ({
                 {batteryValue !== null ? `${Math.round(batteryValue)}%` : '--'}
               </span>
               {rangeValue !== null && (
-                <span className="text-xs text-[var(--text-secondary)]">{Math.round(rangeValue)} {rangeUnit}</span>
+                <span className="text-xs text-[var(--text-secondary)] whitespace-nowrap">{Math.round(rangeValue)} {rangeUnit}</span>
               )}
             </div>
           </div>
@@ -127,7 +127,7 @@ const CarCard = ({
             </span>
             {isCharging && <Zap className="w-5 h-5 text-green-400 animate-pulse -ml-1 mb-1" fill="currentColor" />}
             {rangeValue !== null && (
-              <span className="text-[var(--text-muted)] font-medium text-base ml-1">{Math.round(rangeValue)}{rangeUnit}</span>
+              <span className="text-[var(--text-muted)] font-medium text-base ml-1 whitespace-nowrap">{Math.round(rangeValue)}{rangeUnit}</span>
             )}
           </div>
           {pluggedId && (
