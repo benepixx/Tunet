@@ -1,20 +1,3 @@
-export { default as AddPageModal } from './AddPageModal';
-export { default as CalendarModal } from './CalendarModal';
-export { default as CameraModal } from './CameraModal';
-export { default as ConfigModal } from './ConfigModal';
-export { default as CoverModal } from './CoverModal';
-export { default as EditCardModal } from './EditCardModal';
-export { default as EditHeaderModal } from './EditHeaderModal';
-export { default as EditPageModal } from './EditPageModal';
-export { default as GenericAndroidTVModal } from './GenericAndroidTVModal';
-export { default as GenericClimateModal } from './GenericClimateModal';
-export { default as LeafModal } from './LeafModal';
-export { default as LightModal } from './LightModal';
-export { default as MediaModal } from './MediaModal';
-export { default as NordpoolModal } from './NordpoolModal';
-export { default as PersonModal } from './PersonModal';
-export { default as RoomModal } from './RoomModal';
-export { default as SensorModal } from './SensorModal';
-export { default as StatusPillsConfigModal } from './StatusPillsConfigModal';
-export { default as TodoModal } from './TodoModal';
-export { default as VacuumModal } from './VacuumModal';
+export { default as SonosFavoritesModal } from './SonosFavoritesModal';
+
+// Other exports...
